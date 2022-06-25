@@ -1,0 +1,552 @@
+/**----------------------------------------------------------------------------/
+/**------------------------------Base-----------------------------------------/
+/**--------------------------------------------------------------------------*/
+
+html {
+    height: 100%;
+    width: 100%;
+
+
+}
+
+body {
+
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/**----------------------------------------------------------------------------/
+/**---------------------Menu Filtre / en*tête---------------------------------/
+/**--------------------------------------------------------------------------*/
+
+#Div_MenuTop,
+#Div_MenuFiltre {
+    padding-left: 3%;
+    font-size: 150%;
+}
+
+#Div_MenuTop {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    width: 97%;
+    height: 30px;
+    background-color: rgba(158, 173, 186, 1);
+}
+div#ariane > p {
+    display: flex;
+     align-items: center;
+    font-size: 80%;
+    height: 30px;
+}
+
+div#ariane > p > a:visited,div#ariane > p > a:link{
+   
+        font-size: 100%;
+    color: rgba(30, 95, 148,0.8);
+    text-decoration: none;
+}
+div#ariane > p > a:hover{
+    color : rgba(30, 95, 148, 1);
+}
+
+#Div_MenuFiltre {
+    background-color: #DFE6ED;
+}
+
+#Div_BtnMenuTrie {
+    display: grid;
+    padding-bottom: 1%;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.Btn_Filtre {
+    background-color: #788896;
+    font-size: 80%;
+    text-align: center;
+    margin: 0.3%;
+    width: 14%;
+    min-width: 15rem;
+}
+
+.Btn_Filtre:hover {
+
+    background-color: #2b353d;
+}
+
+input[type=button] {
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+    height: 2rem;
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+/* Partie du trie où on est */
+.Selection_Filtre {
+    background-color: #2b353d;
+    ;
+}
+
+#div_quit{
+    display: flex;
+    justify-content: end;
+}
+#Btn_Quitter {
+    background: url('images/quitter.jpg');
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+
+}
+
+
+
+
+
+
+
+/**----------------------------------------------------------------------------/
+/**---------------------------- Filtre Caché----------------------------------/
+/**--------------------------------------------------------------------------*/
+
+.Div_ButtonMenuTop {
+    padding-bottom: 1%;
+    margin-left: 0.3%;
+    margin-top: 1%;
+    display: grid;
+    grid-template-columns: 12% 12% 12%;
+    height: 30px;
+}
+
+.P_MenuTop {
+
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.P_MenuTop>p {
+    min-width: 60px;
+}
+
+.Input_MenuTop {
+    text-indent: 10px;
+}
+
+.Btn_Rechercher {
+    color: #FFFFFF;
+    background-color: #1e5f94;
+    opacity: 0.9;
+    border-radius: 5px;
+    margin-left: 12%;
+}
+
+
+.Filtre2 {
+    padding-bottom: 1%;
+    display: grid;
+    grid-template: 1fr / minmax(350px, 1fr) minmax(350px, 1fr) 1fr 3fr;
+    grid-gap: 1.2%;
+    margin-left: 0.2%;
+    text-indent: 10px;
+    padding-bottom: 0.6%;
+    margin-top: 1%;
+}
+
+.Filtre2>div {
+    width: 100%;
+    padding-bottom: 1%;
+    margin-top: 1%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 30px;
+
+}
+
+
+
+
+
+
+
+
+/**---------------------------------------------------------------------------/
+/**------------------------Liste Intervention --------------------------------/
+/**--------------------------------------------------------------------------*/
+
+#Div_Liste {
+    font-size: 125%;
+    padding: 0.5% 1.5%;
+    background-color: rgba(195, 207, 217, 255);
+}
+
+
+.OverflowTable {
+    overflow-y: auto;
+    max-height: 350px;
+}
+
+.Prest {
+    max-height: 200px;
+}
+
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead tr {
+    font-size: 120%;
+}
+
+/* Effet hover sauf 1ere "tr" */
+tr:hover:not(.PasHover) {
+    background: #788896;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Quand liste est selectionné */
+/* Laissé comme ça pour overwrite "tr:nth-child(even)" */
+tbody>tr.selection,
+tbody>tr.selected_prest {
+    background: #1e5f94;
+    color: #FFFFFF;
+}
+
+tr:nth-child(even) {
+    background-color: #DFE6ED;
+}
+
+
+tbody {
+    border-top: 10px solid #000000;
+    border-bottom: 10px solid #000000;
+}
+
+tbody td {
+    padding: 8px 10px;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    box-sizing: content-box;
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+/**---------------------------------------------------------------------------/
+/**----------------Bouton Afficher-Ajouter-Modifier-Supprimer-----------------/
+/**--------------------------------------------------------------------------*/
+
+.Div_Bouton {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    color: #000000;
+    font: inherit;
+    text-align: left;
+}
+
+div.Div_Bouton>input {
+    margin: 1rem;
+    border-radius: 5px;
+    min-width: 8rem;
+    opacity: 0.9;
+}
+
+/* Obliger "input." pour que color soit pris en compte*/
+input.BackYel {
+    color: #000000;
+    background-color: #fac43f;
+}
+
+
+
+.BackGris {
+    background-color: #788896;
+}
+
+.BackGrisFonc {
+    background-color: #2b353d;
+}
+
+.BackBlue {
+    background-color: #1e5f94;
+}
+
+
+
+/* Animation hover Boutons en bas et Boutons Rechercher Top */
+.Div_Bouton input:hover:not(#Btn_Afficher),
+.Div_ButtonMenuTop input[type=button]:hover,
+.Filtre2 input[type=button]:hover {
+    color: #ffffff;
+    opacity: 1.0;
+}
+
+#Btn_Afficher:hover {
+    opacity: 1.0;
+}
+
+/**---------------------------------------------------------------------------/
+/**-------------------------- Message Erreur --------------------------------/
+/**-------------------------------------------------------------------------*/
+
+#NoResult {
+    font-size: 80%;
+    padding-bottom: 0.5%;
+}
+
+#NoSelect,
+#NotGoodQte>p,
+#NoSelectPrest>p,
+#Div_Message_Del_Prest>p,
+#Div_Message_Pas_Prest>p {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 120%;
+    padding-right: 2%;
+}
+
+/**---------------------------------------------------------------------------/
+/**--------------------------------- Detail ----------------------------------/
+/**---------------------------------------------------------------------------*/
+
+.Titre_Section {
+    padding-left: 3%;
+    font-size: 150%;
+    height: 30px;
+    background-color: rgba(158, 173, 186, 255);
+}
+
+#Detail_Interv>div:not(.Titre_Section, #DetPrest) {
+    margin: 1% 2% 1% 3.2%;
+}
+
+
+#Detail_Interv>div:not(.Titre_Section)>p:nth-child(odd) {
+    font-weight: 700;
+    overflow-wrap: normal;
+}
+
+#Detail_Interv>div:not(.Titre_Section)>div {
+    text-align: justify;
+}
+
+
+
+/*****? Detail intervention *******/
+
+#Info_Intervention {
+    display: grid;
+    grid-template: repeat(2, 1fr) 30px / minmax(100px, 10%) minmax(100px, 7%) minmax(100px, 12%) minmax(100px, 25%);
+    grid-gap: 10px;
+}
+
+#obs_interv {
+    grid-row: span 2;
+}
+
+
+/*****? Detail Contrat,Conseillé *******/
+
+#Info_Contrat,
+#Info_Conseille {
+    display: grid;
+    grid-template: 1fr / minmax(100px, 10%) minmax(100px, 8%) minmax(100px, 7%) minmax(100px, 12%) minmax(100px, 6%)minmax(100px, 15%);
+    grid-gap: 10px;
+}
+
+/*****? Detail Client *******/
+
+#Info_Client {
+    display: grid;
+    grid-template: 1fr / minmax(100px, 10%) minmax(100px, 8%) minmax(100px, 7%) minmax(100px, 12%) minmax(100px, 6%)minmax(100px, 10%) minmax(100px, 8%)minmax(100px, 12%);
+    grid-gap: 10px;
+}
+
+
+/**---------------------------------------------------------------------------/
+/**---------------------------- Pop up supprimer -----------------------------/
+/**---------------------------------------------------------------------------*/
+
+.opacity {
+    opacity: 0.4;
+}
+
+#pop_up {
+    position: absolute;
+    width: 35%;
+    height: 20%;
+    min-height: 200px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: white;
+    border: solid 0.5px black;
+    text-align: center;
+}
+
+.Btn_pop_up {
+    margin-top: 10%;
+    color: white;
+    width: 50%;
+}
+
+#Btn_pop_up_selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.txt_pop_up p {
+    margin-top: 5%;
+}
+
+
+
+
+/**---------------------------------------------------------------------------/
+/**---------------------------------- HIDE -----------------------------------/
+/**---------------------------------------------------------------------------*/
+
+
+.hide {
+    display: none;
+}
+
+
+/**---------------------------------------------------------------------------/
+/**--------------------------- Total HT-TTC-----------------------------------/
+/**---------------------------------------------------------------------------*/
+
+
+#Total {
+    display: grid;
+    grid-template: 1fr / 6% 7% 6% 8% 6% 12%;
+    grid-gap: 10px;
+    text-align: left;
+    border-top: 1px solid #000000;
+
+}
+
+#Total>* {
+    padding-top: 15px;
+}
+
+#Tbody_Prest>tr>td {
+    padding-left: 0%;
+    text-align: left;
+}
+
+#Table_Prest>thead>tr>th {
+    text-align: left;
+
+}
+
+#Table_Prest {
+    padding-top: 2%;
+}
+
+/*****? text area *******/
+.texttest {
+    resize: none;
+    min-width: 100px;
+    width: 100%;
+    max-width: 400px;
+
+    min-height: 25px;
+    height: 45px;
+    max-height: 55px;
+    overflow: auto;
+
+    padding: 1%;
+}
+
+/**---------------------------------------------------------------------------/
+/**--------------------------------Erreur-------------------------------------/
+/**---------------------------------------------------------------------------*/
+
+#Erreur_Cont,
+#Erreur_Cons,
+#Erreur_Date,
+#Div_Message_Pas_Prest,
+#erreurObjet,
+#erreurHeure {
+    font-size: 100%;
+    color: #1e5f94;
+    font-weight: bold;
+    overflow: auto;
+    grid-column: span 2;
+    min-width: 75px;
+}
+
+
+#num_cont,
+#num_cons,
+#heure_interv {
+    display: grid;
+    grid-template-columns: minmax(75px, 18%);
+    grid-row: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+#heure_interv{
+    grid-column: span 2;
+}
+/**---------------------------------------------------------------------------/
+/**----------------------------Detail_Prestation------------------------------/
+/**--------------------------------------------------------------------------*/
+#Detail_Prestation {
+    width: 95%;
+    display: grid;
+    grid-template: minmax(50px, 25px) minmax(50px, 1fr) / 19.7% 19.5% 19% 20% 19% 4%;
+    padding-left: 3%;
+    padding-top: 1%;
+
+}
+
+#Detail_Prestation>P {
+    font-weight: bold;
+}
+
+
+#Detail_Prestation>div>select {
+    padding: 2% 8% 2% 2%;
+    border: 1px solid #788896;
+    border-radius: 5px;
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    background: transparent url(images/flecheListe.png) no-repeat 100% center;
+}
+
+.unselectable {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

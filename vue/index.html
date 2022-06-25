@@ -1,0 +1,497 @@
+<!--*-------- HTML ---------->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<!--*-------- HEAD ---------->
+
+<head>
+    <!-- googel font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Aplli IHM</title>
+    <link type="text/css" rel="stylesheet" href="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/vue/css/index.css">
+</head>
+
+
+
+<body>
+
+    <!--*-------- En-tête ---------->
+    <div id="all_page">
+        <div id="Div_MenuTop">
+            <div id="ariane">
+                <p> <a href="https://devweb.iutmetz.univ-lorraine.fr/~nitschke5/ihm/IHM_API/pageWeb.php#">S.A.Tㅤ</a> ► <a href="#">ㅤGestion des listes d'interventions et des prestations</a>
+                </p>
+            </div>
+            <p></p>
+            <div id="div_quit">
+                <input type="button" id="Btn_Quitter" value=" ">
+            </div>
+        </div>
+
+
+
+
+
+        <!--*-------- Menu Filtre + Input Filtre ---------->
+
+        <div id="Div_MenuFiltre">
+
+
+            <!--?-------- Choix Filtre --------->
+            <p>Filtre</p>
+            <div>
+                <input id="Btn_Ensemble" class="Btn_Filtre" type="button" value="Ensemble des interventions">
+                <input id="Btn_NumInt" class="Btn_Filtre" type="button" value="Par numéro d’intervention">
+                <input id="Btn_peri" class="Btn_Filtre" type="button" value="Par période">
+                <input id="Btn_Contrat" class="Btn_Filtre" type="button" value="Par numéro de contrat">
+                <input id="Btn_NumCons" class="Btn_Filtre" type="button" value="Par numéro de conseiller">
+                <input id="Btn_Client" class="Btn_Filtre" type="button" value="Par client ">
+            </div>
+
+            <div id="Ensemble" class="hide"></div>
+
+
+
+            <!--?-------- Intervention caché --------->
+            <div id="Interv" class="hide">
+                <div class="Div_ButtonMenuTop">
+                    <div class="P_MenuTop">
+                        <p>Numéro d'intervention</p>
+                    </div>
+                    <input class="Input_MenuTop" id="Input_Interv" type="number" min="0" placeholder="Saisir le numéro">
+                    <input type="button" class="Btn_Rechercher" value="Rechercher" id="Btn_Recherche_Interv">
+                    <!-- METTRE ID DANS BUTTON POUR FAIRE LES BONS TRIE -->
+
+                </div>
+            </div>
+
+
+
+            <!--?-------- Periode caché --------->
+            <div id="Periode" class="hide">
+                <div class="Filtre2">
+
+                    <div class="Div_ButtonMenuTop">
+                        <div class="P_MenuTop">
+                            <p>Date de début</p>
+                        </div>
+                        <input class="Input_MenuTop" id="Input_Periode1" type="date">
+                    </div>
+
+                    <div class="Div_ButtonMenuTop">
+                        <div class="P_MenuTop">
+                            <p>Date de fin</p>
+                        </div>
+                        <input class="Input_MenuTop" id="Input_Periode2" type="date">
+                    </div>
+
+                    <input type="button" class="Btn_Rechercher" value="Rechercher" id="Btn_Recherche_Periode">
+                    <!-- METTRE ID DANS BUTTON POUR FAIRE LES BONS TRIE -->
+
+                </div>
+            </div>
+
+
+
+            <!--?-------- Contrat caché --------->
+            <div id="Contrat" class="hide">
+                <div class="Div_ButtonMenuTop">
+                    <div class="P_MenuTop">
+                        <p>Numéro de contrat</p>
+                    </div>
+                    <input class="Input_MenuTop" id="Input_Contrat" type="number" min="0" placeholder="Saisir le numéro">
+                    <input type="button" class="Btn_Rechercher" value="Rechercher" id="Btn_Recherche_Contrat">
+                    <!-- METTRE ID DANS BUTTON POUR FAIRE LES BONS TRIE -->
+                </div>
+            </div>
+
+
+
+            <!--?-------- Conseiller caché --------->
+            <div id="Conseiller" class="hide">
+                <div class="Div_ButtonMenuTop">
+                    <div class="P_MenuTop">
+                        <p>Numéro de conseiller</p>
+                    </div>
+                    <input class="Input_MenuTop" id="Input_Conseiller" type="number" min="0" placeholder="Saisir le numéro">
+                    <input type="button" class="Btn_Rechercher" value="Rechercher" id="Btn_Recherche_Conseiller">
+                    <!-- METTRE ID DANS BUTTON POUR FAIRE LES BONS TRIE -->
+                </div>
+            </div>
+
+
+
+            <!--?-------- Client caché --------->
+            <div id="Client" class="hide">
+                <div class="Filtre2">
+
+                    <div class="Div_ButtonMenuTop">
+                        <div class="P_MenuTop">
+                            <p>Numéro de Client</p>
+                        </div>
+                        <input class="Input_MenuTop" id="Input_Numero_client" type="number" min="0" placeholder="Saisir le numéro">
+                    </div>
+
+                    <div class="Div_ButtonMenuTop">
+                        <div class="P_MenuTop">
+                            <p>Nom de client</p>
+                        </div>
+                        <input class="Input_MenuTop" id="Input_Nom_client" type="text" placeholder="Saisir le nom">
+                    </div>
+
+                    <input type="button" class="Btn_Rechercher" value="Rechercher" id="Btn_Recherche_Client">
+                    <!-- METTRE ID DANS BUTTON POUR FAIRE LES BONS TRIE -->
+
+                </div>
+            </div>
+
+
+
+            <!--?-------- Pas de résultat --------->
+            <p id="NoResult"> Pas de résultat trouvé pour votre recherche.</p>
+        </div>
+
+
+
+
+
+
+        <!--*-------- Affichage de la liste ---------->
+
+
+        <!--?-------- Titre Liste --------->
+        <div id="Div_Liste">
+            <div id="Div_ListeP">
+                <p> Liste des interventions </p>
+            </div>
+        </div>
+
+        <!--?-------- Table Liste --------->
+        <div class="OverflowTable">
+            <table id="Table_Inter">
+                <thead>
+                    <!--?-------- Titre Colonne --------->
+                    <tr role="row" class="PasHover">
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Numéro d’intervention
+                        </th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Date d’intervention
+                        </th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Numéro de contrat</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Commune</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Nom client</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Numéro client</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Nom conseillé</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Numéro conseillé</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;">Montant</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!--?-------- Liste Intervention--------->
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <!--*-------- Bouton Afficher-Ajouter-Modifier-Supprimer ---------->
+
+        <div class="Div_Bouton" id="Bouton_interv">
+            <p id="NoSelect">Pas de ligne sélectionnées.</p>
+            <input type="button" id="Btn_Afficher" class="BackBlue" value="Afficher">
+            <input type="button" id="Btn_Ajouter" class="BackBlue" value="Ajouter">
+            <input type="button" id="Btn_Modifier" class="BackBlue" value="Modifier">
+            <input type="button" id="Btn_Supprimer" class="BackGrisFonc" value="Supprimer">
+        </div>
+
+
+
+        <div id="Detail_Interv" class="hide">
+
+
+
+            <!--?--------  Intervention  --------->
+
+            <div class="Titre_Section">
+                <p id="Intervention_Titre"> Détail d'une intervention </p>
+            </div>
+
+            <!--? Séparer la grid en deux si jamais on veut pas que le texte s'allonge avec le motif/observation de l'intervention -->
+            <div id="Info_Intervention">
+                <p>Numéro d’intervention</p>
+                <div id="num_interv"></div>
+
+                <p>Motif de l’intervention</p>
+                <div id="objet_interv">
+                    <p class="hide" id="erreurObjet">Attention, un motif d'intervention ne peut être vide</p>
+                </div>
+
+                <p>Date d’intervention</p>
+                <div id="date_interv">
+                    <p class="hide" id="Erreur_Date">Attention, cette date d'intervention existe déjà pour ce contrat</p>
+                </div>
+
+                <p>Observation de l’intervention</p>
+                <div id="obs_interv">
+
+                </div>
+
+                <p>Heure de l’intervention</p>
+                <div id="heure_interv">
+                </div>
+                <p class="hide" id="erreurHeure">Attention, l'heure ne peut pas être vide</p>
+            </div>
+
+
+
+            <!--?--------  Contrat  --------->
+
+            <div class="Titre_Section">
+                <p> Contrat </p>
+            </div>
+
+            <div id="Info_Contrat">
+                <p>Numéro de contrat</p>
+                <div id="num_cont">
+                    <p class="hide" id="Erreur_Cont">Attention, aucun numéro de contrat ne correspond</p>
+                </div>
+
+                <p>Date de création</p>
+                <div id="date_cont"></div>
+
+                <p>Commune</p>
+                <div id="ville_site"></div>
+            </div>
+
+
+
+            <!--?--------  Client  --------->
+
+            <div class="Titre_Section">
+                <p> Client </p>
+            </div>
+
+            <div id="Info_Client">
+                <p>Numéro de client</p>
+                <div id="num_cli"></div>
+
+                <p>Nom du client</p>
+                <div id="nom_cli"></div>
+
+                <p>Mail</p>
+                <div id="mel_cli"></div>
+
+                <p>Téléphone</p>
+                <div id="tel_cli"></div>
+            </div>
+
+            <!--?--------  Conseillé  --------->
+
+            <div class="Titre_Section">
+                <p> Conseiller </p>
+            </div>
+
+            <div id="Info_Conseille">
+                <p>Numéro de conseiller</p>
+                <div id="num_cons">
+                    <p class="hide" id="Erreur_Cons">Attention, aucun numéro de conseiller ne correspond</p>
+                </div>
+
+                <p>Nom du conseillé</p>
+                <div id="nom_cons"></div>
+
+                <p>Téléphone</p>
+                <div id="tel_cons"></div>
+            </div>
+
+
+            <!--?--------  Liste des prestations  --------->
+
+            <div class="Titre_Section">
+                <p> Prestation </p>
+            </div>
+
+            <div class="OverflowTable Prest">
+                <table id="Table_Prest">
+                    <thead>
+                        <!--?-------- Titre Colonne --------->
+                        <tr role="row" class="PasHover">
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%;">Code</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%;">Libellé prestations
+                            </th>
+                            <!-- <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 14%;">Libellé</th> -->
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%;">Prix unitaire HT
+                            </th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%;">Type d'opération
+                            </th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%;">Quantité</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 20%;">Prix</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Tbody_Prest">
+                        <!--?-------- Liste Prestation--------->
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="Tot">
+                <div id="Total">
+                    <p> Total HT</p>
+                    <div id="Total_HT"></div>
+
+                    <p> TVA</p>
+                    <div id="Total_TVA"></div>
+
+                    <p> Total TTC</p>
+                    <div id="Total_TTC"></div>
+                </div>
+            </div>
+
+
+            <!--?--------  Prestation  --------->
+            <div id='DetPrest'>
+
+                <div class="Titre_Section" id="Titre_Prestation">
+                    <p> Ajout Prestation </p>
+                </div>
+
+                <div id="Detail_Prestation">
+                    <p>Code</p>
+                    <p>Libellé prestations</p>
+                    <p>Prix unitaire HT</p>
+                    <p>Type d'opération</p>
+                    <p>Quantité</p>
+                    <p>Prix</p>
+                    <div id="Code_prest"></div>
+                    <div id="Lib_prest"></div>
+                    <div id="Prix_prest"></div>
+                    <div id="Type_prest">
+                        <select>
+                            <option value="R">Réparation</option>
+                            <option value="M">Maintenance</option>
+                        </select>
+                    </div>
+                    <div id="Qte_prest"></div>
+                    <div id="Total_prest">
+                        <p></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--?--------  Bouton Prestation  --------->
+            <div id="Div_Bouton_Prest" class="Div_Bouton hide">
+                <div id="NoSelectPrest">
+                    <p>Pas de prestation sélectionnées.</p>
+                </div>
+                <input type="button" id="Btn_AjouterPrest" class="BackBlue" value="Ajouter">
+                <input type="button" id="Btn_ModifierPrest" class="BackBlue" value="Modifier">
+                <input type="button" id="Btn_SupprimerPrest" class="BackGrisFonc" value="Supprimer">
+            </div>
+
+
+
+            <div id="Div_Retour_Affich" class="Div_Bouton hide">
+                <input type="button" id="Btn_RetourAffich" class="BackGrisFonc " value="Retour">
+            </div>
+            <!--?--------  Bouton Modif interv  --------->
+            <div id="Div_Bouton_Modif" class="Div_Bouton hide">
+                <input type="button" id="Btn_ValiderModif" class="BackGris" value="Valider">
+                <input type="button" id="Btn_AnnulerModif" class="BackGrisFonc" value="Annuler">
+            </div>
+
+
+
+
+
+            <!--?--------  Erreur quantité --------->
+            <div id="NotGoodQte">
+                <p>La quantité rentrée doit être un entier supérieur à 0</p>
+            </div>
+
+            <!--?--------  Bouton Ajout  prestation --------->
+            <div id="Div_Bouton_Valider_Ajout_Prest" class="Div_Bouton hide">
+                <input type="button" id="Btn_ValiderAjoutPrest" class="BackGris" value="Valider">
+                <input type="button" id="Btn_AnnulerAjoutPrest" class="BackGrisFonc" value="Annuler">
+            </div>
+
+
+            <!--?--------  Bouton Modif  prestation --------->
+            <div id="Div_Bouton_Valider_Modif_Prest" class="Div_Bouton hide">
+                <input type="button" id="Btn_ValiderModifPrest" class="BackGris" value="Valider">
+                <input type="button" id="Btn_AnnulerModifPrest" class="BackGrisFonc" value="Annuler">
+            </div>
+
+            <!--?--------  Bouton Delete  prestation --------->
+            <div id="Div_Message_Del_Prest" class="hide">
+                <p>Êtes-vous sûr de vouloir supprimer cette prestation?</p>
+            </div>
+            <div id="Div_Bouton_Valider_Del_Prest" class="Div_Bouton hide">
+                <div id="Div_Message_derniere_Prest" class="hide">
+                    <p>Vous ne pouvez pas supprimer la dernière prestation.</p>
+                </div>
+                <input type="button" id="Btn_ValiderDelPrest" class="BackGris" value="Valider">
+                <input type="button" id="Btn_AnnulerDelPrest" class="BackGrisFonc" value="Annuler">
+            </div>
+
+            <!--?--------  Bouton Ajout  intervention --------->
+            <div id="Div_Bouton_Ajout" class="Div_Bouton hide">
+                <div id="Div_Message_Pas_Prest" class="hide">
+                    <p>Il faut au moins une prestation</p>
+                </div>
+                <input type="button" id="Btn_ValiderAjout" class="BackGris" value="Valider">
+                <input type="button" id="Btn_AnnulerAjout" class="BackGrisFonc" value="Annuler">
+            </div>
+        </div>
+    </div>
+
+
+    <!--?--------  Pop up supprimer intervention --------->
+    <div id="pop_up" class="hide">
+        <div id="Div_MenuTop">Validation</div>
+        <div class="txt_pop_up">
+            <p>
+                Etes vous sur de vouloir faire cette opération?
+            </p>
+        </div>
+        <div id="Btn_pop_up_selection">
+            <div class="txt_pop_up"><input type="button" class="Btn_pop_up BackBlue" id="Btn_Valider_pop_up" value="Valider">
+            </div>
+            <div class="txt_pop_up"><input type="button" class="Btn_pop_up BackGrisFonc" id="Btn_Annuler_pop_up" value="Annuler"></div>
+        </div>
+    </div>
+</body>
+
+
+<!--*-------- Scripts ---------->
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Intervention_modifier.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Filtre_afficher.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Connexion.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Table.js"></script>
+
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Filtre.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Intervention_ajouter.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Intervention_supprimer.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Intervention.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Prestation.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/General.js"></script>
+
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Intervention_afficher.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_ajout.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_delete.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_detail.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_intervention_modifier.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_prestation_modifier.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_prestation.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/modele/Data_table.js"></script>
+<script src="https://devweb.iutmetz.univ-lorraine.fr/~burnel12u/ihm/ihm2/controleur/Filtre_selectionner.js"></script>
+
+
+</html>

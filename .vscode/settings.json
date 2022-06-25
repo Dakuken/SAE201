@@ -1,0 +1,10 @@
+{
+    "liveServer.settings.port": 5501,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+        "javascript"
+    ],
+    "git.ignoreLimitWarning": true
+}
